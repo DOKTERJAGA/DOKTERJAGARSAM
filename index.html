@@ -7,13 +7,24 @@
   <style>
     body { font-family: Arial, sans-serif; background:#f4f6f8; padding:20px; }
     h1 { text-align:center; }
-    form, table { background:#fff; padding:15px; border-radius:8px; margin-bottom:20px; }
+    form, table {
+      background:#fff; padding:15px; border-radius:8px; margin-bottom:20px;
+    }
     label { font-weight:bold; display:block; margin-top:10px; }
-    input, textarea, select { width:100%; padding:8px; margin-top:5px; }
-    button { margin-top:15px; width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:6px; }
+    input, textarea, select {
+      width:100%; padding:8px; margin-top:5px;
+    }
+    button {
+      margin-top:15px; width:100%; padding:10px;
+      background:#2563eb; color:white; border:none; border-radius:6px;
+    }
     table { width:100%; border-collapse:collapse; }
-    th, td { border:1px solid #ddd; padding:8px; }
+    th, td { border:1px solid #ddd; padding:8px; text-align:left; }
     th { background:#e5e7eb; }
+    .hapus {
+      background:#dc2626; color:white; border:none;
+      padding:6px 10px; border-radius:5px;
+    }
   </style>
 </head>
 <body>
@@ -46,7 +57,12 @@
 <table>
   <thead>
     <tr>
-      <th>Nama</th><th>Umur</th><th>Dx</th><th>Tindakan</th><th>Status</th>
+      <th>Nama</th>
+      <th>Umur</th>
+      <th>Dx</th>
+      <th>Tindakan</th>
+      <th>Status</th>
+      <th>Aksi</th>
     </tr>
   </thead>
   <tbody id="tabel"></tbody>
@@ -58,13 +74,26 @@ const tabel = document.getElementById("tabel");
 
 function render() {
   tabel.innerHTML = "";
-  data.forEach(p => {
+  data.forEach((p, i) => {
     tabel.innerHTML += `<tr>
-      <td>${p.nama}</td><td>${p.umur}</td><td>${p.dx}</td>
-      <td>${p.tindakan}</td><td>${p.status}</td>
+      <td>${p.nama}</td>
+      <td>${p.umur}</td>
+      <td>${p.dx}</td>
+      <td>${p.tindakan}</td>
+      <td>${p.status}</td>
+      <td><button class="hapus" onclick="hapus(${i})">Hapus</button></td>
     </tr>`;
   });
 }
+
+function hapus(i) {
+  if (confirm("Yakin hapus pasien ini?")) {
+    data.splice(i, 1);
+    localStorage.setItem("pasien", JSON.stringify(data));
+    render();
+  }
+}
+
 render();
 
 document.getElementById("form").onsubmit = e => {
