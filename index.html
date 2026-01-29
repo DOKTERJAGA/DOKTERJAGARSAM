@@ -1,87 +1,64 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Operan Jaga Dokter Umum</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: Arial, sans-serif; background:#f4f6f8; padding:20px; }
-    h1 { text-align:center; }
-    form, table {
-      background:#fff; padding:15px; border-radius:8px; margin-bottom:20px;
-    }
-    label { font-weight:bold; display:block; margin-top:10px; }
-    input, textarea, select {
-      width:100%; padding:8px; margin-top:5px;
-    }
-    button {
-      margin-top:15px; width:100%; padding:10px;
-      background:#2563eb; color:white; border:none; border-radius:6px;
-      cursor:pointer;
-    }
-    table { width:100%; border-collapse:collapse; }
-    th, td { border:1px solid #ddd; padding:8px; text-align:left; }
-    th { background:#e5e7eb; }
-    .hapus {
-      background:#dc2626; color:white; border:none;
-      padding:6px 10px; border-radius:5px;
-      cursor:pointer;
-    }
-    /* WARNA BARIS SESUAI STATUS */
-    .Observasi td { background-color: #fee2e2; } /* merah muda */
-    .Stabil td { background-color: #d1fae5; }    /* hijau muda */
-    .Rujuk td { background-color: #fdba74; }      /* orange */
-  </style>
+<meta charset="UTF-8">
+<title>Operan Jaga Dokter Umum</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { font-family: Arial, sans-serif; background:#f4f6f8; padding:20px; }
+h1 { text-align:center; }
+form, table { background:#fff; padding:15px; border-radius:8px; margin-bottom:20px; }
+label { font-weight:bold; display:block; margin-top:10px; }
+input, textarea, select { width:100%; padding:8px; margin-top:5px; }
+button { margin-top:15px; width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer; }
+table { width:100%; border-collapse:collapse; }
+th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+th { background:#e5e7eb; }
+.hapus { background:#dc2626; color:white; border:none; padding:6px 10px; border-radius:5px; cursor:pointer; }
+/* WARNA BARIS SESUAI STATUS */
+.Observasi td { background-color: #f87171; } /* merah */
+.Stabil td { background-color: #34d399; }    /* hijau */
+.Rujuk td { background-color: #fb923c; }      /* orange */
+</style>
 </head>
 <body>
 
 <h1>Operan Jaga Dokter Umum</h1>
 
 <form id="form">
-  <label>Nama Pasien</label>
-  <input id="nama" required>
-
-  <label>Umur</label>
-  <input id="umur" type="number" required>
-
-  <label>Diagnosis</label>
-  <input id="dx" required>
-
-  <label>Tindakan / Catatan</label>
-  <textarea id="tindakan"></textarea>
-
-  <label>Status</label>
-  <select id="status" required>
-    <option value="Observasi">Observasi</option>
-    <option value="Stabil">Stabil</option>
-    <option value="Rujuk">Rujuk</option>
-  </select>
-
-  <button type="submit">Simpan</button>
+<label>Nama Pasien</label>
+<input id="nama" required>
+<label>Umur</label>
+<input id="umur" type="number" required>
+<label>Diagnosis</label>
+<input id="dx" required>
+<label>Tindakan / Catatan</label>
+<textarea id="tindakan"></textarea>
+<label>Status</label>
+<select id="status" required>
+<option value="Observasi">Observasi</option>
+<option value="Stabil">Stabil</option>
+<option value="Rujuk">Rujuk</option>
+</select>
+<button type="submit">Simpan</button>
 </form>
 
 <table>
-  <thead>
-    <tr>
-      <th>Nama</th>
-      <th>Umur</th>
-      <th>Dx</th>
-      <th>Tindakan</th>
-      <th>Status</th>
-      <th>Tanggal</th>
-      <th>Aksi</th>
-    </tr>
-  </thead>
-  <tbody id="tabel"></tbody>
+<thead>
+<tr>
+<th>Nama</th><th>Umur</th><th>Dx</th><th>Tindakan</th><th>Status</th><th>Tanggal</th><th>Aksi</th>
+</tr>
+</thead>
+<tbody id="tabel"></tbody>
 </table>
 
 <script>
-const data = JSON.parse(localStorage.getItem("pasien") || "[]");
+let data = JSON.parse(localStorage.getItem("pasien") || "[]"); // gunakan let
 const tabel = document.getElementById("tabel");
 
 function render() {
   tabel.innerHTML = "";
-  data.forEach((p, i) => {
+  data.forEach((p,i)=>{
     const nama = p.nama || "Belum diisi";
     const umur = p.umur || "-";
     const dx = p.dx || "-";
@@ -90,20 +67,14 @@ function render() {
     const tanggal = p.tanggal || "-";
 
     tabel.innerHTML += `<tr class="${status}">
-      <td>${nama}</td>
-      <td>${umur}</td>
-      <td>${dx}</td>
-      <td>${tindakan}</td>
-      <td>${status}</td>
-      <td>${tanggal}</td>
-      <td><button class="hapus" onclick="hapus(${i})">Hapus</button></td>
-    </tr>`;
+<td>${nama}</td><td>${umur}</td><td>${dx}</td><td>${tindakan}</td><td>${status}</td><td>${tanggal}</td><td><button class="hapus" onclick="hapus(${i})">Hapus</button></td>
+</tr>`;
   });
 }
 
 function hapus(i) {
-  if (confirm("Yakin hapus pasien ini?")) {
-    data.splice(i, 1);
+  if(confirm("Yakin hapus pasien ini?")){
+    data.splice(i,1);
     localStorage.setItem("pasien", JSON.stringify(data));
     render();
   }
@@ -114,23 +85,16 @@ render();
 document.getElementById("form").addEventListener("submit", function(e){
   e.preventDefault();
 
-  const namaEl = document.getElementById("nama");
-  const umurEl = document.getElementById("umur");
-  const dxEl = document.getElementById("dx");
-  const tindakanEl = document.getElementById("tindakan");
-  const statusEl = document.getElementById("status");
-
-  const nama = namaEl.value.trim();
-  const umur = umurEl.value;
-  const dx = dxEl.value.trim();
-  const tindakan = tindakanEl.value.trim();
-  const status = statusEl.options[statusEl.selectedIndex].value; // pasti sesuai pilihan
+  const nama = document.getElementById("nama").value.trim();
+  const umur = document.getElementById("umur").value;
+  const dx = document.getElementById("dx").value.trim();
+  const tindakan = document.getElementById("tindakan").value.trim();
+  const status = document.getElementById("status").value; // PASTI ambil value yang dipilih
 
   const now = new Date();
-  const tanggal = now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear() + " " +
-                  now.getHours() + ":" + now.getMinutes();
+  const tanggal = now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes();
 
-  data.push({ nama, umur, dx, tindakan, status, tanggal });
+  data.push({nama,umur,dx,tindakan,status,tanggal});
   localStorage.setItem("pasien", JSON.stringify(data));
   render();
   this.reset();
