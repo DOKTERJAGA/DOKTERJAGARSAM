@@ -24,6 +24,7 @@
     .hapus {
       background:#dc2626; color:white; border:none;
       padding:6px 10px; border-radius:5px;
+      cursor:pointer;
     }
   </style>
 </head>
@@ -62,6 +63,7 @@
       <th>Dx</th>
       <th>Tindakan</th>
       <th>Status</th>
+      <th>Tanggal</th>
       <th>Aksi</th>
     </tr>
   </thead>
@@ -75,13 +77,22 @@ const tabel = document.getElementById("tabel");
 function render() {
   tabel.innerHTML = "";
   data.forEach((p, i) => {
+    // fallback supaya tidak undefined
+    const nama = p.nama || "Belum diisi";
+    const umur = p.umur || "-";
+    const dx = p.dx || "-";
+    const tindakan = p.tindakan || "-";
+    const status = p.status || "Observasi";
+    const tanggal = p.tanggal || "-";
+
     tabel.innerHTML += `<tr>
-      <td>${p.nama}</td>
-      <td>${p.umur}</td>
-      <td>${p.dx}</td>
-      <td>${p.tindakan}</td>
-      <td>${p.status}</td>
-      <td><button type="hapus" onclick="hapus(${i})">Hapus</button></td>
+      <td>${nama}</td>
+      <td>${umur}</td>
+      <td>${dx}</td>
+      <td>${tindakan}</td>
+      <td>${status}</td>
+      <td>${tanggal}</td>
+      <td><button class="hapus" onclick="hapus(${i})">Hapus</button></td>
     </tr>`;
   });
 }
@@ -98,13 +109,19 @@ render();
 
 document.getElementById("form").onsubmit = e => {
   e.preventDefault();
+
+  const now = new Date();
+  const tanggal = now.toLocaleString("id-ID", { dateStyle: "short", timeStyle: "short" });
+
   data.push({
-    nama: nama.value,
-    umur: umur.value,
-    dx: dx.value,
-    tindakan: tindakan.value,
-    status: status.value
+    nama: nama.value || "Belum diisi",
+    umur: umur.value || "-",
+    dx: dx.value || "-",
+    tindakan: tindakan.value || "-",
+    status: status.value || "Observasi",
+    tanggal: tanggal
   });
+
   localStorage.setItem("pasien", JSON.stringify(data));
   render();
   e.target.reset();
