@@ -53,26 +53,20 @@ th { background:#e5e7eb; }
 </table>
 
 <script>
-let data = JSON.parse(localStorage.getItem("pasien") || "[]"); // gunakan let
+// PASTIKAN pakai LET, bukan CONST
+let data = JSON.parse(localStorage.getItem("pasien") || "[]");
 const tabel = document.getElementById("tabel");
 
 function render() {
   tabel.innerHTML = "";
-  data.forEach((p,i)=>{
-    const nama = p.nama || "Belum diisi";
-    const umur = p.umur || "-";
-    const dx = p.dx || "-";
-    const tindakan = p.tindakan || "-";
-    const status = p.status || "Observasi";
-    const tanggal = p.tanggal || "-";
-
-    tabel.innerHTML += `<tr class="${status}">
-<td>${nama}</td><td>${umur}</td><td>${dx}</td><td>${tindakan}</td><td>${status}</td><td>${tanggal}</td><td><button class="hapus" onclick="hapus(${i})">Hapus</button></td>
+  data.forEach((p, i) => {
+    tabel.innerHTML += `<tr class="${p.status}">
+<td>${p.nama}</td><td>${p.umur}</td><td>${p.dx}</td><td>${p.tindakan}</td><td>${p.status}</td><td>${p.tanggal}</td><td><button class="hapus" onclick="hapus(${i})">Hapus</button></td>
 </tr>`;
   });
 }
 
-function hapus(i) {
+function hapus(i){
   if(confirm("Yakin hapus pasien ini?")){
     data.splice(i,1);
     localStorage.setItem("pasien", JSON.stringify(data));
@@ -85,18 +79,22 @@ render();
 document.getElementById("form").addEventListener("submit", function(e){
   e.preventDefault();
 
+  // ambil value langsung
   const nama = document.getElementById("nama").value.trim();
   const umur = document.getElementById("umur").value;
   const dx = document.getElementById("dx").value.trim();
   const tindakan = document.getElementById("tindakan").value.trim();
-  const status = document.getElementById("status").value; // PASTI ambil value yang dipilih
+  const status = document.getElementById("status").value; // PASTI ambil yang dipilih
 
   const now = new Date();
   const tanggal = now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear() + " " + now.getHours() + ":" + now.getMinutes();
 
-  data.push({nama,umur,dx,tindakan,status,tanggal});
+  data.push({nama, umur, dx, tindakan, status, tanggal});
+
+  // update localStorage
   localStorage.setItem("pasien", JSON.stringify(data));
   render();
+
   this.reset();
 });
 </script>
