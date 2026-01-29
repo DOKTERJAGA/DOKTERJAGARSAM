@@ -1,163 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8">
+  <title>Operan Jaga Dokter Umum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f6f8; padding:20px; }
+    h1 { text-align:center; }
+    form, table { background:#fff; padding:15px; border-radius:8px; margin-bottom:20px; }
+    label { font-weight:bold; display:block; margin-top:10px; }
+    input, textarea, select { width:100%; padding:8px; margin-top:5px; }
+    button { margin-top:15px; width:100%; padding:10px; background:#2563eb; color:white; border:none; border-radius:6px; }
+    table { width:100%; border-collapse:collapse; }
+    th, td { border:1px solid #ddd; padding:8px; }
+    th { background:#e5e7eb; }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="id"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Operan Jaga Dokter Umum&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: Arial, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #f4f6f8;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>form, table {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #ffffff;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 2px 5px rgba(0,0,0,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>label {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>input, textarea, select {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 4px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 4px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #ccc;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>button {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #2563eb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>button:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #1e40af;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>table {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-collapse: collapse;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>th, td {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #ddd;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-align: left;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 14px;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>th {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #e5e7eb;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;h1&gt;Operan Jaga Dokter Umum&lt;/h1&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;form id="patientForm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;Nama Pasien&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="text" id="nama" required /&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;Umur&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="number" id="umur" required /&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;Diagnosis&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;input type="text" id="dx" required /&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;Tindakan / Catatan&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;textarea id="tindakan" rows="3"&gt;&lt;/textarea&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;label&gt;Status&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;select id="status"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;option&gt;Observasi&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;option&gt;Stabil&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;option&gt;Rujuk&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/select&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;button type="submit"&gt;Simpan Pasien&lt;/button&gt;</p>
-<p class="p1">&lt;/form&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;table&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;thead&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;th&gt;Nama&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;th&gt;Umur&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;th&gt;Diagnosis&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;th&gt;Tindakan&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;th&gt;Status&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/thead&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;tbody id="patientTable"&gt;&lt;/tbody&gt;</p>
-<p class="p1">&lt;/table&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const form = document.getElementById('patientForm');</p>
-<p class="p1"><span class="Apple-converted-space">  </span>const table = document.getElementById('patientTable');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>let patients = JSON.parse(localStorage.getItem('patients')) || [];</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>function renderTable() {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>table.innerHTML = '';</p>
-<p class="p1"><span class="Apple-converted-space">    </span>patients.forEach(p =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>const row = document.createElement('tr');</p>
-<p class="p1"><span class="Apple-converted-space">      </span>row.innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;td&gt;${p.nama}&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;td&gt;${p.umur}&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;td&gt;${p.dx}&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;td&gt;${p.tindakan}&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;td&gt;${p.status}&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>table.appendChild(row);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>});</p>
-<p class="p1"><span class="Apple-converted-space">  </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>renderTable();</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>form.addEventListener('submit', function(e) {</p>
-<p class="p1"><span class="Apple-converted-space">    </span>e.preventDefault();</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>const data = {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>nama: nama.value,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>umur: umur.value,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>dx: dx.value,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>tindakan: tindakan.value,</p>
-<p class="p1"><span class="Apple-converted-space">      </span>status: status.value</p>
-<p class="p1"><span class="Apple-converted-space">    </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>patients.push(data);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>localStorage.setItem('patients', JSON.stringify(patients));</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>renderTable();</p>
-<p class="p1"><span class="Apple-converted-space">    </span>form.reset();</p>
-<p class="p1"><span class="Apple-converted-space">  </span>});</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+<h1>Operan Jaga Dokter Umum</h1>
+
+<form id="form">
+  <label>Nama Pasien</label>
+  <input id="nama" required>
+
+  <label>Umur</label>
+  <input id="umur" type="number" required>
+
+  <label>Diagnosis</label>
+  <input id="dx" required>
+
+  <label>Tindakan / Catatan</label>
+  <textarea id="tindakan"></textarea>
+
+  <label>Status</label>
+  <select id="status">
+    <option>Observasi</option>
+    <option>Stabil</option>
+    <option>Rujuk</option>
+  </select>
+
+  <button>Simpan</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nama</th><th>Umur</th><th>Dx</th><th>Tindakan</th><th>Status</th>
+    </tr>
+  </thead>
+  <tbody id="tabel"></tbody>
+</table>
+
+<script>
+let data = JSON.parse(localStorage.getItem("pasien") || "[]");
+const tabel = document.getElementById("tabel");
+
+function render() {
+  tabel.innerHTML = "";
+  data.forEach(p => {
+    tabel.innerHTML += `<tr>
+      <td>${p.nama}</td><td>${p.umur}</td><td>${p.dx}</td>
+      <td>${p.tindakan}</td><td>${p.status}</td>
+    </tr>`;
+  });
+}
+render();
+
+document.getElementById("form").onsubmit = e => {
+  e.preventDefault();
+  data.push({
+    nama: nama.value,
+    umur: umur.value,
+    dx: dx.value,
+    tindakan: tindakan.value,
+    status: status.value
+  });
+  localStorage.setItem("pasien", JSON.stringify(data));
+  render();
+  e.target.reset();
+};
+</script>
+
 </body>
 </html>
