@@ -27,10 +27,10 @@
       padding:6px 10px; border-radius:5px;
       cursor:pointer;
     }
-    /* opsional: warna status berbeda */
-    .Observasi { background:#fef3c7; }
-    .Stabil { background:#d1fae5; }
-    .Rujuk { background:#fee2e2; }
+    /* WARNA BARIS SESUAI STATUS */
+    .Observasi td { background-color: #fee2e2; } /* merah muda */
+    .Stabil td { background-color: #d1fae5; }    /* hijau muda */
+    .Rujuk td { background-color: #fdba74; }      /* orange */
   </style>
 </head>
 <body>
@@ -51,7 +51,7 @@
   <textarea id="tindakan"></textarea>
 
   <label>Status</label>
-  <select id="status">
+  <select id="status" required>
     <option value="Observasi">Observasi</option>
     <option value="Stabil">Stabil</option>
     <option value="Rujuk">Rujuk</option>
@@ -76,7 +76,7 @@
 </table>
 
 <script>
-let data = JSON.parse(localStorage.getItem("pasien") || "[]");
+const data = JSON.parse(localStorage.getItem("pasien") || "[]");
 const tabel = document.getElementById("tabel");
 
 function render() {
@@ -111,29 +111,30 @@ function hapus(i) {
 
 render();
 
-document.getElementById("form").onsubmit = e => {
+document.getElementById("form").addEventListener("submit", function(e){
   e.preventDefault();
 
-  const nama = document.getElementById("nama").value.trim() || "Belum diisi";
-  const umur = document.getElementById("umur").value || "-";
-  const dx = document.getElementById("dx").value.trim() || "-";
-  const tindakan = document.getElementById("tindakan").value.trim() || "-";
-  const status = document.getElementById("status").value || "Observasi";
+  const namaEl = document.getElementById("nama");
+  const umurEl = document.getElementById("umur");
+  const dxEl = document.getElementById("dx");
+  const tindakanEl = document.getElementById("tindakan");
+  const statusEl = document.getElementById("status");
+
+  const nama = namaEl.value.trim();
+  const umur = umurEl.value;
+  const dx = dxEl.value.trim();
+  const tindakan = tindakanEl.value.trim();
+  const status = statusEl.options[statusEl.selectedIndex].value; // pasti sesuai pilihan
 
   const now = new Date();
-  let tanggal;
-  try {
-    tanggal = now.toLocaleString("id-ID", { dateStyle: "short", timeStyle: "short" });
-  } catch {
-    tanggal = now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear() + " " +
-              now.getHours() + ":" + now.getMinutes();
-  }
+  const tanggal = now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear() + " " +
+                  now.getHours() + ":" + now.getMinutes();
 
   data.push({ nama, umur, dx, tindakan, status, tanggal });
   localStorage.setItem("pasien", JSON.stringify(data));
   render();
-  e.target.reset();
-};
+  this.reset();
+});
 </script>
 
 </body>
