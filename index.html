@@ -1,3 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Operan Jaga Dokter Umum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f6f8; padding:20px; }
+    h1 { text-align:center; }
+    form, table {
+      background:#fff; padding:15px; border-radius:8px; margin-bottom:20px;
+    }
+    label { font-weight:bold; display:block; margin-top:10px; }
+    input, textarea, select {
+      width:100%; padding:8px; margin-top:5px;
+    }
+    button {
+      margin-top:15px; width:100%; padding:10px;
+      background:#2563eb; color:white; border:none; border-radius:6px;
+      cursor:pointer;
+    }
+    table { width:100%; border-collapse:collapse; }
+    th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+    th { background:#e5e7eb; }
+    .hapus {
+      background:#dc2626; color:white; border:none;
+      padding:6px 10px; border-radius:5px;
+      cursor:pointer;
+    }
+    /* opsional: warna status berbeda */
+    .Observasi { background:#fef3c7; }
+    .Stabil { background:#d1fae5; }
+    .Rujuk { background:#fee2e2; }
+  </style>
+</head>
+<body>
+
+<h1>Operan Jaga Dokter Umum</h1>
+
+<form id="form">
+  <label>Nama Pasien</label>
+  <input id="nama" required>
+
+  <label>Umur</label>
+  <input id="umur" type="number" required>
+
+  <label>Diagnosis</label>
+  <input id="dx" required>
+
+  <label>Tindakan / Catatan</label>
+  <textarea id="tindakan"></textarea>
+
+  <label>Status</label>
+  <select id="status">
+    <option value="Observasi">Observasi</option>
+    <option value="Stabil">Stabil</option>
+    <option value="Rujuk">Rujuk</option>
+  </select>
+
+  <button type="submit">Simpan</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nama</th>
+      <th>Umur</th>
+      <th>Dx</th>
+      <th>Tindakan</th>
+      <th>Status</th>
+      <th>Tanggal</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody id="tabel"></tbody>
+</table>
+
 <script>
 let data = JSON.parse(localStorage.getItem("pasien") || "[]");
 const tabel = document.getElementById("tabel");
@@ -12,7 +89,7 @@ function render() {
     const status = p.status || "Observasi";
     const tanggal = p.tanggal || "-";
 
-    tabel.innerHTML += `<tr>
+    tabel.innerHTML += `<tr class="${status}">
       <td>${nama}</td>
       <td>${umur}</td>
       <td>${dx}</td>
@@ -43,21 +120,21 @@ document.getElementById("form").onsubmit = e => {
   const tindakan = document.getElementById("tindakan").value.trim() || "-";
   const status = document.getElementById("status").value || "Observasi";
 
-  // fallback format tanggal kalau browser lama tidak support dateStyle
   const now = new Date();
   let tanggal;
   try {
     tanggal = now.toLocaleString("id-ID", { dateStyle: "short", timeStyle: "short" });
   } catch {
-    // fallback manual
     tanggal = now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear() + " " +
               now.getHours() + ":" + now.getMinutes();
   }
 
   data.push({ nama, umur, dx, tindakan, status, tanggal });
-
   localStorage.setItem("pasien", JSON.stringify(data));
   render();
   e.target.reset();
 };
 </script>
+
+</body>
+</html>
